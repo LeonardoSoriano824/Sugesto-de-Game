@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Recomendador de Jogos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #4b6cb7, #182848);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px;       
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        a.button {
+            flex: 1 1 200px; 
+            padding: 15px 25px;
+            background-color: #ff9800;
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            user-select: none;
+        }
+
+        a.button:hover {
+            background-color: #e68900;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 480px) {
+            a.button {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Recomendador de Jogos</h1>
+        <p>Descubra novos jogos de forma rápida e divertida</p>
+        <div class="button-container">
+            <a href="{{ url_for('random_games') }}" class="button">Ver jogos aleatórios</a>
+            <a href="{{ url_for('best_rated_games') }}" class="button">Ver jogos mais bem avaliados</a>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jogos Aleatórios</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #4b6cb7, #182848);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin: 0;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .game {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            backdrop-filter: blur(3px);
+        }
+
+        .game h2 {
+            margin: 10px 0;
+            font-size: 1.4em;
+            color: #ff9800;
+        }
+
+        .rating {
+            font-weight: bold;
+            color: #f9c74f;
+        }
+
+        .summary {
+            font-style: italic;
+            font-size: 0.95em;
+            margin: 10px 0;
+        }
+
+        img {
+            margin-top: 10px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        a.back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ff9800;
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        a.back-button:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jogos Aleatórios</h1>
+    </header>
+
+    <main>
+        {% if games %}
+            {% for game in games %}
+                <div class="game">
+                    <h2>{{ game.name }}</h2>
+
+                    {% if game.rating %}
+                        <p class="rating">Nota: {{ "%.1f"|format(game.rating) }}</p>
+                    {% else %}
+                        <p>Nota não disponível.</p>
+                    {% endif %}
+
+                    {% if game.summary %}
+                        <p class="summary">{{ game.summary }}</p>
+                    {% else %}
+                        <p class="summary">Descrição não disponível.</p>
+                    {% endif %}
+
+                    {% if game.cover %}
+                        <img src="https:{{ game.cover.url }}" alt="Capa de {{ game.name }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum jogo encontrado.</p>
+        {% endif %}
+    </main>
+
+    <a href="{{ url_for('index') }}" class="back-button">Voltar para a página inicial</a>
+</body>
+</html>

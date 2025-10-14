@@ -1,22 +1,10 @@
-# Ambiente virtual
 .venv/
-venv/
-
-# Arquivos de configuração e variáveis de ambiente
 .env
-
-# Cache do Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Logs
 *.log
-
-# Banco de dados local (se for SQLite)
 *.sqlite3
-
-# Arquivos do VS Code / IDEs
 .vscode/
 .idea/
